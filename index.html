@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="greet.css">
+    <title>Document</title>
+</head>
+<body>
+  <header>
+    <img src="tenor.gif" style="width:15%;" class="center">
+    </header>
+    <hr>
+    <div class="container">
+      <div class="eight columns">
+        <div class="col-12" style="width:200px;">
+        <h3>Enter Name Below: </h3><input type="string"  onfocus="this.value=''" class="namesUpdate" value="">
+        <span id="greet"><span class="greetingsCounter"></span></span>
+      </div>
+    <div class="row">
+              <div class="col-12" style="width:250px;"><h3>Choose A Language</h3>
+              <label class="">
+                <input type="radio" name="langItemType" class="langItemTypeRadio" value="Xhosa">
+                <span class="label-body">Xhosa</span>
+              </label>
+              <label class="">
+                    <input type="radio" name="langItemType" class="langItemTypeRadio" value="English">
+                    <span class="label-body">English</span>
+                  </label>
+              <label class="">
+                <input type="radio" name="langItemType" class="langItemTypeRadio" value="Afrikaans">
+                <span class="label-body" >Afrikaans</span>
+              </label>
+            </div>
+              <div style="padding:1em;">
+              <button class="button-primary greetBtn" on type="button" name="button" id="button" style="width:30%;" >Greet</button>
+            </div>
+      <div class="row" style="padding:1em;">
+        <strong></strong>
+        <span class="final"><span class="greetFinal"></span> </span>
+      </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="greet.js"></script>
+</html>
