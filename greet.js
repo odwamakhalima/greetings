@@ -38,17 +38,17 @@ function greet(){
       }
       const regex = /\d/;
       const exist = regex.test(myNames);
-if( exist == true){
-  document.getElementById("greet").innerHTML = "Please enter a valid name!!";
-  document.getElementById("greet").classList.add("warning");
-}
-else{
+if( exist == false){
   localStorage.greetingsCounter = Number(localStorage.greetingsCounter)+1;
   localStorage.setItem('myNames',JSON.stringify(namesGreeted))
   document.getElementById("greet").innerHTML = "You have greeted " + localStorage.greetingsCounter + " people.";
-  greetFinalElement.innerHTML = result
-  document.getElementById("greet").classList.remove("warning");
+}
+
+else{
+  result = "Please enter a valid name!!"
+
 }
   }
+  greetFinalElement.innerHTML = result
 }
 greetBtn.addEventListener('click', greet)
