@@ -36,11 +36,14 @@ function greet(){
       namesGreeted[myNames] = 0;
       if(typeof(Storage) !== "undefined") {
         if (localStorage.greetingsCounter) {
+         
+        }
       const regex = /\d/;
       const exist = regex.test(myNames);
 if( exist == false){
-  localStorage.greetingsCounter = (localStorage.greetingsCounter)+1;
-  localStorage.setItem('myNames',JSON.stringify(namesGreeted))
+  localStorage.greetingsCounter = Number(localStorage.greetingsCounter)+1;
+  localStorage.setItem('greetingsCounter',JSON.stringify(namesGreeted))
+
 console.log(localStorage)
   document.getElementById("greet").innerHTML = "You have greeted " + localStorage.greetingsCounter + " people.";
 }
@@ -49,9 +52,8 @@ else{
   result = "Please enter a valid name!!"
 }
   }
+  greetFinalElement.innerHTML = result
 
-}
     }
-    greetFinalElement.innerHTML = result
 }
 greetBtn.addEventListener('click', greet)
