@@ -43,11 +43,9 @@ function greet(){
 if( exist == false){
   localStorage.greetingsCounter = Number(localStorage.greetingsCounter)+1;
   localStorage.setItem('myNames',JSON.stringify(namesGreeted))
-
 console.log(localStorage)
   document.getElementById("greet").innerHTML = "You have greeted " + localStorage.greetingsCounter + " people.";
 }
-
 else{
   result = "Please enter a valid name!!"
 }
