@@ -52,8 +52,7 @@ else{
   result = "Please enter a valid name!!"
 }
   }
-  greetFinalElement.innerHTML = result
-
     }
+    greetFinalElement.innerHTML = result
 }
 greetBtn.addEventListener('click', greet)
