@@ -1,3 +1,4 @@
+function greetFactory(){
 function greet(myNames){
     myNames = myNames.replace(/(\+|\-)?[0-9!@#$%^&*(),.?" ^$:^\d+=/${/'}`"\[.*?\]|<>]/gi, '');
     if(isNaN(myNames.trim())) {
@@ -5,4 +6,5 @@ function greet(myNames){
     myNames = updated.charAt(0).toUpperCase() + updated.slice(1)
 }
     return myNames
+}
 }

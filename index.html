@@ -1,27 +1,51 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="greet.css">
+    <title>Document</title>
 </head>
-
 <body>
-    <div id="mocha"></div>
-    <script>
-        mocha.setup('bdd');
-        var assert = chai.assert;
-    </script>
-
-    <script src="greetFactory.js" charset="utf-8"></script>
-    <script src="test/greetFactory.test.js" charset="utf-8"></script>
-    <script>
-        mocha.checkLeaks();
-        mocha.run();
-    </script>
+  <header>
+    <img src="tenor.gif" style="width:15%;" class="center">
+    </header>
+    <hr>
+    <div class="container">
+      <div class="eight columns">
+        <div class="col-12" style="width:200px;">
+        <h3>Enter Name Below: </h3><input type="string"  onfocus="this.value=''" class="namesUpdate" value="" placeholder="Enter A Name">
+        <span id="greet">People Greeted: <span class="greetingsCounter"></span></span>
+      </div>
+    <div class="row">
+              <div class="col-12" style="width:250px;"><h3>Choose A Language</h3>
+              <label class="">
+                <input id="radio" type="radio" name="langItemType" class="langItemTypeRadio" value="Xhosa">
+                <span class="label-body">Xhosa</span>
+              </label>
+              <label class="">
+                    <input type="radio" name="langItemType" class="langItemTypeRadio" value="English">
+                    <span class="label-body">English</span>
+                  </label>
+              <label class="">
+                <input type="radio" name="langItemType" class="langItemTypeRadio" value="Afrikaans">
+                <span class="label-body" >Afrikaans</span>
+              </label>
+            </div>
+              <div style="padding:1em;">
+              <button class="button-primary greetBtn" on type="button" name="button" id="button" style="width:30%;"  >Greet</button>
+              <button class="button-primary resetBtn" on type="button" name="button" id="button" style="width:30%;" >Reset</button>
+            </div>
+      <div class="row" style="padding:1em;">
+        <strong></strong>
+        <span class="final">Greet: <span class="greetFinal"></span></span>
+      </div>
+    </div>
+</div>
+</div>
 </body>
-
+<script src="greet.js"></script>
+<script src="greetFactory.js"></script>
+<script src="test/greetFactory.test.js"></script>
 </html>
