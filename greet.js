@@ -14,9 +14,10 @@ var storeNames = JSON.parse(localStorage.getItem('myNames'));
 var namesGreeted = storeNames || {};
 var ol = Object.keys(namesGreeted);
 var greetingsCounter = ol.length
+var regex = /(\+|\-)?[0-9!@#$%^&*(),.?" ^$:^\d+=/${/'}`''"\[.*?\]|<>]/gi
 function greet(){
     myNames = namesUpdate.value
-    myNames = myNames.replace(/(\+|\-)?[0-9!@#$%^&*(),.?" ^$:^\d+=/${/'}`"\[.*?\]|<>]/gi, '');
+    myNames = myNames.replace(regex, '');
     if(isNaN(namesUpdate.value.trim())) {
     var updated = namesUpdate.value.trim().toLowerCase()
     myNames = updated.charAt(0).toUpperCase() + updated.slice(1)
@@ -25,29 +26,29 @@ function greet(){
     if (checkedRadioBtn){
     var langItemType = checkedRadioBtn.value
     if(langItemType === 'Xhosa'){
-      result = Xhosa + myNames.replace(/(\+|\-)?[0-9!@#$%^&*(),.?" ^$:^\d+=/${/'}`"\[.*?\]|<>]/gi, '')
+      result = Xhosa + myNames.replace(regex, '')
   }
   else if(langItemType === 'English'){
-      result = English + myNames.replace(/(\+|\-)?[0-9!@#$%^&*(),.?" ^$:^\d+=/${/'}`"\[.*?\]|<>]/gi, '')
+      result = English + myNames.replace(regex, '')
   }
   else if(langItemType === 'Afrikaans'){
-      result = Afrikaans + myNames.replace(/(\+|\-)?[0-9!@#$%^&*(),.?" ^$:^\d+=/${/'}`"\[.*?\]|<>]/gi, '')
+      result = Afrikaans + myNames.replace(regex, '')
   }
 }
-
-    if (namesGreeted[myNames.replace(/(\+|\-)?[0-9!@#$%^&*(),.?" ^$:^\d+=/${/'}`''"\[.*?\]|<>]/gi, '')] === undefined){
-      namesGreeted[myNames.replace(/(\+|\-)?[0-9!@#$%^&*(),.?" ^$:^\d+=/${/'}`"\[.*?\]|<>]/gi, '')] = 0;
+var myTest = regex.test(myNames);
+    if (namesGreeted[myNames.replace(regex, '')] === undefined){
+      namesGreeted[myNames.replace(regex, '')] = 0;
       if(typeof(Storage) !== "undefined") {
         if (Number(localStorage.greetingsCounter)){
         }
-  if(myNames.length > 0){
+  if(myNames.length > 0 && myTest == false){
   greetingsCounter = Number(greetingsCounter)+1;
   localStorage.setItem('myNames',JSON.stringify(namesGreeted))
   greetingsElem.innerHTML =  greetingsCounter ;
   }
     }
   }
-  console.log(namesGreeted)
+  console.log(myTest)
     greetFinalElement.innerHTML = result
 }
 greetBtn.addEventListener('click', greet)
