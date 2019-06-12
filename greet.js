@@ -15,21 +15,18 @@ var namesGreeted = storeNames || {};
 var ol = Object.keys(namesGreeted);
 var greetingsCounter = ol.length
 var regex = /(\+|\-)?[0-9!@#$%^&*();,.?" ^$:^\d+=/${/'}`''"\[.*?\]|<>]/gi
-
 var factoryGreet = greetings();
-
-function greet(){
-  factoryGreet.add()
+function greets(){
       myNames = namesUpdate.value
-    //  myNames = myNames.replace(regex, '');
-//     if(isNaN(namesUpdate.value.trim())) {
-//     var updated = namesUpdate.value.trim().toLowerCase()
-//     myNames = updated.charAt(0).toUpperCase() + updated.slice(1)
-// }
+     myNames = myNames.replace(regex, '');
+    if(isNaN(namesUpdate.value.trim())) {
+    var updated = namesUpdate.value.trim().toLowerCase()
+    myNames = updated.charAt(0).toUpperCase() + updated.slice(1)
+}
     var checkedRadioBtn = document.querySelector("input[name='langItemType']:checked");
     if (checkedRadioBtn){
     var langItemType = checkedRadioBtn.value
-    factoryGreet.language()
+    //factoryGreet.language()
       if(langItemType === 'Xhosa'){
       result = Xhosa + myNames.replace(regex, '')
   }
@@ -41,13 +38,12 @@ function greet(){
   }
 }
 var myTest = regex.test(myNames);
-factoryGreet.add()
     if (namesGreeted[myNames.replace(regex, '')] === undefined){
        namesGreeted[myNames.replace(regex, '')] = 0;
        if(typeof(Storage) !== "undefined") {
        if (Number(localStorage.greetingsCounter)){
          }
-  if(myNames.length > 0 && myTest == false){
+  if(myNames.length > 0){
    greetingsCounter = Number(greetingsCounter)+1;
    localStorage.setItem('myNames',JSON.stringify(namesGreeted))
    greetingsElem.innerHTML =  greetingsCounter ;
@@ -56,7 +52,7 @@ factoryGreet.add()
   }
     greetFinalElement.innerHTML = result
 }
-greetBtn.addEventListener('click', greet)
+greetBtn.addEventListener('click', greets)
 
 function clearClick(){
   localStorage.clear();

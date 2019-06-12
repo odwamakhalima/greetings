@@ -6,7 +6,8 @@ function greetings(){
     var ol = Object.keys(namesGreeted);
     var greetingsCounter = ol.length
     var namesGreeted = {};
-
+    var myNames = ''
+    var myTest = regex.test(myNames);
     function languageSelector(language){        
         if(language === 'Xhosa'){
             theLanguage = "Xhosa"
@@ -19,10 +20,30 @@ function greetings(){
         }
 return theLanguage
 }
+function storedNames(myNames){
+    myNames = myNames.replace(regex, '');
+    if(isNaN(myNames.trim())) {
+    var updated = myNames.trim().toLowerCase()
+    myNames = updated.charAt(0).toUpperCase() + updated.slice(1)
+    }
+    if (namesGreeted[myNames] === undefined){   
+        namesGreeted[myNames] = 0;
+        if(typeof(Storage) !== "undefined") {
+            if (Number(localStorage.greetingsCounter)){
+              }
+              if(myNames.length > 0 && myTest == false){
+                greetingsCounter = Number(greetingsCounter)+1;
+              }
+      }
+    }
+      return myNames
+}
+
 function greetName(myNames, language){
 var English = 'Hello '
 var Xhosa = 'Molo '
 var Afrikaans = 'Hallo '
+
     if(language === 'Xhosa'){
       result = Xhosa + myNames.replace(regex, '')
   }
@@ -34,29 +55,9 @@ var Afrikaans = 'Hallo '
   }
   return result;
 }
-function storedNames(myNames){
-   
-    myNames = myNames.replace(regex, '');
-    if(isNaN(myNames.trim())) {
-    var updated = myNames.trim().toLowerCase()
-    myNames = updated.charAt(0).toUpperCase() + updated.slice(1)
-    }
-    if (namesGreeted[myNames.replace(regex, '')] === undefined){   
-        namesGreeted[myNames.replace(regex, '')] = 0;
-        if(typeof(Storage) !== "undefined") {
-            if (Number(localStorage.greetingsCounter)){
-              }
-      }
-      if(myNames.length > 0){
-        greetingsCounter = Number(greetingsCounter)+1;
-      } 
-    }
-      return myNames
-}
 function counterValueDisplayer(){
     return greetingsCounter
 }
-
     return {
         add: storedNames,
         greet: greetName,
