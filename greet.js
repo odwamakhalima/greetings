@@ -15,7 +15,9 @@ var namesGreeted = storeNames || {};
 var ol = Object.keys(namesGreeted);
 var greetingsCounter = ol.length
 var regex = /(\+|\-)?[0-9!@#$%^&*();,.?" ^$:^\d+=/${/'}`''"\[.*?\]|<>]/gi
+
 var factoryGreet = greetings();
+
 function greets(){
       myNames = namesUpdate.value
      myNames = myNames.replace(regex, '');
@@ -56,6 +58,7 @@ var myTest = regex.test(myNames);
     greetFinalElement.innerHTML = result
 }
 greetBtn.addEventListener('click', greets)
+
 
 function clearClick(){
   localStorage.clear();
