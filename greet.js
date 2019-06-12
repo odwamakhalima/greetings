@@ -23,10 +23,11 @@ function greets(){
     var updated = namesUpdate.value.trim().toLowerCase()
     myNames = updated.charAt(0).toUpperCase() + updated.slice(1)
 }
+//factoryGreet.language()
     var checkedRadioBtn = document.querySelector("input[name='langItemType']:checked");
     if (checkedRadioBtn){
     var langItemType = checkedRadioBtn.value
-    //factoryGreet.language()
+//factoryGreet.greet()
       if(langItemType === 'Xhosa'){
       result = Xhosa + myNames.replace(regex, '')
   }
@@ -38,11 +39,13 @@ function greets(){
   }
 }
 var myTest = regex.test(myNames);
+//factoryGreet.add()
     if (namesGreeted[myNames.replace(regex, '')] === undefined){
        namesGreeted[myNames.replace(regex, '')] = 0;
        if(typeof(Storage) !== "undefined") {
        if (Number(localStorage.greetingsCounter)){
          }
+//factoryGreet.count()
   if(myNames.length > 0){
    greetingsCounter = Number(greetingsCounter)+1;
    localStorage.setItem('myNames',JSON.stringify(namesGreeted))
