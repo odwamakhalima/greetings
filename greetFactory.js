@@ -22,7 +22,6 @@ function greetings(){
 return theLanguage
 }
 function storedNames(myNames){
-    greet()
     myNames = myNames.replace(regex, '');
     if(isNaN(myNames.trim())) {
     var updated = myNames.trim().toLowerCase()
