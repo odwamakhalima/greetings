@@ -21,24 +21,6 @@ function greetings(){
         }
 return theLanguage
 }
-function storedNames(myNames){
-    myNames = myNames.replace(regex, '');
-    if(isNaN(myNames.trim())) {
-    var updated = myNames.trim().toLowerCase()
-    myNames = updated.charAt(0).toUpperCase() + updated.slice(1)
-    }
-    if (namesGreeted[myNames] === undefined){   
-        namesGreeted[myNames] = 0;
-        if(typeof(Storage) !== "undefined") {
-            if (Number(localStorage.greetingsCounter)){
-              }
-              if(myNames.length > 0 && myTest == false){
-                greetingsCounter = Number(greetingsCounter)+1;
-              }
-      }
-    }
-      return myNames
-}
 
 function greetName(myNames, language){
 var English = 'Hello '
@@ -55,6 +37,25 @@ var Afrikaans = 'Hallo '
       result = Afrikaans + myNames.replace(regex, '')
   }
   return result;
+}
+function storedNames(myNames){
+    myNames = myNames.replace(regex, '');
+    if(isNaN(myNames.trim())) {
+    var updated = myNames.trim().toLowerCase()
+    myNames = updated.charAt(0).toUpperCase() + updated.slice(1)
+    }
+    if (namesGreeted[myNames] === undefined){   
+        namesGreeted[myNames] = 0;
+        if(typeof(Storage) !== "undefined") {
+            if (Number(localStorage.greetingsCounter)){
+              }
+              if(myNames.replace(regex, '').length > 0){
+                greetingsCounter = Number(greetingsCounter)+1;
+              }
+
+      }
+    }
+      return myNames
 }
 function counterValueDisplayer(){
     return greetingsCounter

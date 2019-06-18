@@ -8,7 +8,6 @@ var myNames = ''
 var English = 'Hello '
 var Xhosa = 'Molo '
 var Afrikaans = 'Hallo '
-var greetingsCounter = 0;
 var result = ''
 var storeNames = JSON.parse(localStorage.getItem('myNames'));
 var namesGreeted = storeNames || {};
@@ -48,14 +47,17 @@ var myTest = regex.test(myNames);
        if (Number(localStorage.greetingsCounter)){
          }
 //factoryGreet.count()
-  if(myNames.length > 0){
+  if(myNames.replace(regex, '').length > 0){
    greetingsCounter = Number(greetingsCounter)+1;
    localStorage.setItem('myNames',JSON.stringify(namesGreeted))
    greetingsElem.innerHTML =  greetingsCounter ;
+   greetFinalElement.innerHTML = result
     }
+
      }
   }
-    greetFinalElement.innerHTML = result
+  
+  greetFinalElement.innerHTML = result
 }
 greetBtn.addEventListener('click', greets)
 
