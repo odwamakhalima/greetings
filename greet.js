@@ -47,7 +47,7 @@ var myTest = regex.test(myNames);
        if(typeof(Storage) !== "undefined") {
        if (Number(localStorage.greetingsCounter)){
          }
-//factoryGreet.count()
+console.log(factoryGreet.count())
   if(myNames.length > 0){
    greetingsCounter = Number(greetingsCounter)+1;
    localStorage.setItem('myNames',JSON.stringify(namesGreeted))
@@ -67,3 +67,6 @@ function clearClick(){
   document.getElementById ("greet").innerHTML = greetingsCounter;
 }
 resetBtn.addEventListener('click', clearClick)
+window.onload = function(){
+  greetingsElem.innerHTML =  greetingsCounter ;
+}

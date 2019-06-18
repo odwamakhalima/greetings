@@ -8,6 +8,7 @@ function greetings(){
     var namesGreeted = {};
     var myNames = ''
     var myTest = regex.test(myNames);
+    
     function languageSelector(language){        
         if(language === 'Xhosa'){
             theLanguage = "Xhosa"
@@ -21,6 +22,7 @@ function greetings(){
 return theLanguage
 }
 function storedNames(myNames){
+    greet()
     myNames = myNames.replace(regex, '');
     if(isNaN(myNames.trim())) {
     var updated = myNames.trim().toLowerCase()

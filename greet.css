@@ -43,9 +43,9 @@ p {
 }
 
 .center {
-  text-align: center;
+  
   position: relative;
-  left:45%;
+  left:41%;
 }
 
 /* ==== GRID SYSTEM ==== */
@@ -58,7 +58,6 @@ p {
 .row {
   position: relative;
   width: 100%;
-  flex: 1;
 }
 
 .row [class^="col"] {
@@ -141,10 +140,5 @@ p {
     margin-left: auto;
     margin-right: auto;
     display: flex;
-  }
-}
-@media only screen and (max-width: 320px) { 
-  .center{
-    width:20%;
   }
 }
