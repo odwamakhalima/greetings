@@ -19,7 +19,7 @@ var factoryGreet = greetings();
 
 function greets(){
       myNames = namesUpdate.value
-     myNames = myNames.replace(regex, '');
+     myNames = myNames;
     if(isNaN(namesUpdate.value.trim())) {
     var updated = namesUpdate.value.trim().toLowerCase()
     myNames = updated.charAt(0).toUpperCase() + updated.slice(1)
@@ -30,37 +30,47 @@ function greets(){
     var langItemType = checkedRadioBtn.value
 //factoryGreet.greet()
       if(langItemType === 'Xhosa'){
-      result = Xhosa + myNames.replace(regex, '')
+      result = Xhosa + myNames
   }
   else if(langItemType === 'English'){
-      result = English + myNames.replace(regex, '')
+      result = English + myNames
   }
   else if(langItemType === 'Afrikaans'){
-      result = Afrikaans + myNames.replace(regex, '')
+      result = Afrikaans + myNames
   }
 }
 var myTest = regex.test(myNames);
+console.log(myTest)
 //factoryGreet.add()
-    if (namesGreeted[myNames.replace(regex, '')] === undefined){
-       namesGreeted[myNames.replace(regex, '')] = 0;
+    if (namesGreeted[myNames] === undefined){
+       namesGreeted[myNames] = 0;
        if(typeof(Storage) !== "undefined") {
        if (Number(localStorage.greetingsCounter)){
          }
 //factoryGreet.count()
-  if(myNames.replace(regex, '').length > 0){
+  if(myNames.length > 0 && myTest == false){
    greetingsCounter = Number(greetingsCounter)+1;
    localStorage.setItem('myNames',JSON.stringify(namesGreeted))
-   greetingsElem.innerHTML =  greetingsCounter ;
    greetFinalElement.innerHTML = result
     }
-
-     }
-  }
-  
+else if(myTest == true){
+  result = 'please enter a correct name'
   greetFinalElement.innerHTML = result
 }
-greetBtn.addEventListener('click', greets)
+else if(myNames.length <= 0){
+  result = 'please enter something'
+  greetFinalElement.innerHTML = result
+}
+     }
+  }
+  greetFinalElement.innerHTML = result
+  greetingsElem.innerHTML =  greetingsCounter;
 
+}
+greetBtn.addEventListener('click', greets)
+window.onload = function(){
+  greetingsElem.innerHTML =  greetingsCounter ;
+}
 
 function clearClick(){
   localStorage.clear();
@@ -69,6 +79,4 @@ function clearClick(){
   document.getElementById ("greet").innerHTML = greetingsCounter;
 }
 resetBtn.addEventListener('click', clearClick)
-window.onload = function(){
-  greetingsElem.innerHTML =  greetingsCounter ;
-}
+
