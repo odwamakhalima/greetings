@@ -1,19 +1,21 @@
 function greetings(storeNames) {
-  
+
     var counter = 0
     var regex = /(\+|\-)?[0-9!@#$%^&*();,.?" ^$:^\d+=/${/'}`''"\[.*?\]|<>]/i
     var namesGreeted = storeNames || {};
     var myNames;
     var check = false
+    var result;
 
-    function errors(){
-        return errorM
-    }
+
+
 
 
     function addNames(type) {
+
         var myTest = regex.test(myNames)
-        if (myTest === false) {
+        console.log(myTest)
+        if (myTest === false || type === '') {
             myNames = type.trim();
             myNames = myNames.toUpperCase()
             return true
@@ -37,8 +39,9 @@ function greetings(storeNames) {
         var English = 'Hello '
         var Xhosa = 'Molo '
         var Afrikaans = 'Hallo '
-        var result;
+        var myTest = regex.test(myNames)
 
+        if (myTest === false) {
         if (languageType === 'Xhosa') {
             result = Xhosa + myNames
         }
@@ -48,31 +51,36 @@ function greetings(storeNames) {
         if (languageType === 'Afrikaans') {
             result = Afrikaans + myNames
         }
+    }
         return result;
     }
     function storedNames(names) {
+
         myNames = names
-        if (myNames.trim()) {
-            if (addNames(myNames)) {
-                var allData = []
-                allData = Object.keys(namesGreeted)
-                for (var i = 0; i < allData.length; i++) {
-                    if (allData === myNames) {
-                        check = true
+        var myTest = regex.test(myNames)
+        if (myTest === false) {
+            if (myNames.trim()) {
+                if (addNames(myNames)) {
+                    var allData = []
+                    allData = Object.keys(namesGreeted)
+                    for (var i = 0; i < allData.length; i++) {
+                        if (allData === myNames) {
+                            check = true
+                        }
                     }
-                }
-                if (check === false) {
-                     if (namesGreeted[myNames] === undefined) {
-                         namesGreeted[myNames] = 0;
-                         count()
-                     }
+                    if (check === false) {
+                        if (namesGreeted[myNames] === undefined) {
+                            namesGreeted[myNames] = 0;
+                            count()
+                        }
+                    }
                 }
             }
         }
     }
     function displayer(input) {
         var show;
-        if(check === true){
+        if (check === true) {
             show = 'already there'
             return show
         }
@@ -86,6 +94,6 @@ function greetings(storeNames) {
         count,
         displayer,
         output,
-        errors
+
     }
 }
