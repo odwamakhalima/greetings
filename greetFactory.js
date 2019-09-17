@@ -1,69 +1,91 @@
-function greetings(){
-    var theLanguage = ""
-    var result = ""
-    var regex = /(\+|\-)?[0-9!@#$%^&*();,.?" ^$:^\d+=/${/'}`''"\[.*?\]|<>]/gi
-    var namesGreeted = {};
-    var ol = Object.keys(namesGreeted);
-    var greetingsCounter = ol.length
-    var namesGreeted = {};
-    var myNames = ''
-    var myTest = regex.test(myNames);
-    
-    function languageSelector(language){        
-        if(language === 'Xhosa'){
-            theLanguage = "Xhosa"
-        }
-        else if(language === 'English'){
-            theLanguage = "English"
-        }
-        else if(language === 'Afrikaans'){
-            theLanguage = "Afrikaans"
-        }
-return theLanguage
-}
+function greetings(storeNames) {
+  
+    var counter = 0
+    var regex = /(\+|\-)?[0-9!@#$%^&*();,.?" ^$:^\d+=/${/'}`''"\[.*?\]|<>]/i
+    var namesGreeted = storeNames || {};
+    var myNames;
+    var check = false
 
-function greetName(myNames, language){
-var English = 'Hello '
-var Xhosa = 'Molo '
-var Afrikaans = 'Hallo '
-
-    if(language === 'Xhosa'){
-      result = Xhosa + myNames.replace(regex, '')
-  }
-  else if(language === 'English'){
-      result = English + myNames.replace(regex, '')
-  }
-  else if(language === 'Afrikaans'){
-      result = Afrikaans + myNames.replace(regex, '')
-  }
-  return result;
-}
-function storedNames(myNames){
-    myNames = myNames.replace(regex, '');
-    if(isNaN(myNames.trim())) {
-    var updated = myNames.trim().toLowerCase()
-    myNames = updated.charAt(0).toUpperCase() + updated.slice(1)
+    function errors(){
+        return errorM
     }
-    if (namesGreeted[myNames] === undefined){   
-        namesGreeted[myNames] = 0;
-        if(typeof(Storage) !== "undefined") {
-            if (Number(localStorage.greetingsCounter)){
-              }
-              if(myNames.replace(regex, '').length > 0){
-                greetingsCounter = Number(greetingsCounter)+1;
-              }
 
-      }
+
+    function addNames(type) {
+        var myTest = regex.test(myNames)
+        if (myTest === false) {
+            myNames = type.trim();
+            myNames = myNames.toUpperCase()
+            return true
+        }
     }
-      return myNames
-}
-function counterValueDisplayer(){
-    return greetingsCounter
-}
+
+    function count() {
+        var myKey = Object.keys(namesGreeted)
+        counter = myKey.length
+        console.log(myKey)
+        return counter
+    }
+
+    function output() {
+
+        return namesGreeted
+    }
+
+    function greetName(language) {
+        var languageType = language
+        var English = 'Hello '
+        var Xhosa = 'Molo '
+        var Afrikaans = 'Hallo '
+        var result;
+
+        if (languageType === 'Xhosa') {
+            result = Xhosa + myNames
+        }
+        if (languageType === 'English') {
+            result = English + myNames
+        }
+        if (languageType === 'Afrikaans') {
+            result = Afrikaans + myNames
+        }
+        return result;
+    }
+    function storedNames(names) {
+        myNames = names
+        if (myNames.trim()) {
+            if (addNames(myNames)) {
+                var allData = []
+                allData = Object.keys(namesGreeted)
+                for (var i = 0; i < allData.length; i++) {
+                    if (allData === myNames) {
+                        check = true
+                    }
+                }
+                if (check === false) {
+                     if (namesGreeted[myNames] === undefined) {
+                         namesGreeted[myNames] = 0;
+                         count()
+                     }
+                }
+            }
+        }
+    }
+    function displayer(input) {
+        var show;
+        if(check === true){
+            show = 'already there'
+            return show
+        }
+        show = greetName(input);
+        return show
+    }
     return {
-        add: storedNames,
-        greet: greetName,
-        count: counterValueDisplayer,
-        language: languageSelector,
+        addNames,
+        storedNames,
+        greetName,
+        count,
+        displayer,
+        output,
+        errors
     }
 }
